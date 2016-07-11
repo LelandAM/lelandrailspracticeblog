@@ -1,0 +1,16 @@
+<%= form_for @user, url: {action: "create"}, html: {class: "login-form", id: "login-form"} do |f|%>
+  <div>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+
+  <div>
+    <%= f.submit "Login" %>
+  </div>
+
+<% end %>

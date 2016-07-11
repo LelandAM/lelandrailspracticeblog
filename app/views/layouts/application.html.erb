@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LelandAM Blarg</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="container">
+    <div id="sidebar">
+      <nav>
+        <% if logged_in? && admin? %>
+          <p>Admin Logged In</p>
+        <% end %>
+        <% if logged_in? %>
+          <p><%= current_user.username %></p>
+        <% end %>
+        <% if logged_in? && admin? %>
+          <ul>
+            <li><%= link_to 'Home', root_path %> </li>
+            <li><%= link_to 'New Post', new_post_path %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          </ul>
+        <% elsif logged_in? %>
+         <ul>
+            <li><%= link_to 'Home', root_path %> </li>
+            <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          </ul></%>
+        <% else %>
+          <ul>
+            <li><%= link_to 'Home', root_path %> </li>
+            <li><%= link_to 'Register', users_new_path %></li>
+            <li><%= link_to 'Login', login_path %></li>
+          </ul>
+        <% end %>
+      </nav>
+    </div>
+    <%= yield %>
+  </body>
+</html>

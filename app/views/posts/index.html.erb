@@ -1,0 +1,11 @@
+<h2>All Posts</h2>
+
+<ol>
+<% @posts.each do |post| %>
+  <li><div class="post_wrapper">
+    <h3><p><%= link_to post.title, post %></p></h3>
+    <p><%= post.created_at.strftime("%B, %d, %Y") %></p>
+    <p><%= post.body %></p>
+  </div></li>
+<% end %>
+</ol>
